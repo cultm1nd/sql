@@ -1,0 +1,44 @@
+<?php
+
+$con=new mysqli("localhost","root","","firstb");
+if($con->connect_error)
+{
+    die("connection failed: ".$con->connect_error);
+};
+// $sql="CREATE DATABASE firstb";
+// if($con->query($sql))
+// {
+//     echo "base true";
+// }
+// else 
+// {
+//     echo "connection failed: ".$con->error;
+// }
+
+// $sql="CREATE TABLE Users(id INTEGER AUTO_INCREMENT PRIMARY KEY, name VARCHAR(30),login VARCHAR(30),password VARCHRAR(30);";
+// if($con->query($sql))
+// {
+//     echo "table users true";
+// }
+// else
+// {
+//     echo "connection failed: ".$con->error;
+// }
+if(isset($_POST['username'])&&isset($_POST['userlogin'])&&isset($_POST['userpassword']))
+{
+    $username=$_POST["username"];
+    $userlogin=$_POST["userlogin"];
+    $userpassword=$_POST["userpassword"];
+    $sql="INSERT INTO users (name, login, password)VALUES( $username,$userlogin,$userpassword)";
+    if($con->query($sql))
+    {
+        echo"data add";
+    }
+    else 
+    {
+        echo"die: ".$con->$error;
+    }
+};
+$con->close();
+
+?>
